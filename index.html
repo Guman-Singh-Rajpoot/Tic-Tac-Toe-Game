@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TicTac — Classic Reimagined</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Space Grotesk (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── HEADER ───────────────────────────────────────────── -->
+  <header class="site-header">
+    <span class="logo">TicTac</span>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="icon-sun">☀</span>
+      <span class="icon-moon">◑</span>
+    </button>
+  </header>
+
+  <!-- ── MAIN ─────────────────────────────────────────────── -->
+  <main class="game-shell">
+
+    <!-- Mode & Difficulty bar -->
+    <section class="controls-bar">
+      <div class="mode-group" role="group" aria-label="Game mode">
+        <button class="pill active" data-mode="hvh" id="btnHvH">👥 Human vs Human</button>
+        <button class="pill" data-mode="hva" id="btnHvA">🤖 Human vs AI</button>
+      </div>
+
+      <div class="diff-group" id="diffGroup" aria-label="AI difficulty" aria-hidden="true">
+        <button class="chip active" data-diff="easy">Easy</button>
+        <button class="chip" data-diff="medium">Medium</button>
+        <button class="chip" data-diff="hard">Hard</button>
+      </div>
+    </section>
+
+    <!-- Score row -->
+    <section class="scoreboard" aria-label="Scoreboard">
+      <div class="score-card" id="scoreX">
+        <span class="score-mark x-mark">✕</span>
+        <span class="score-label" id="labelX">Player X</span>
+        <span class="score-val" id="valX">0</span>
+      </div>
+      <div class="score-card draw-card">
+        <span class="score-mark draw-mark">–</span>
+        <span class="score-label">Draws</span>
+        <span class="score-val" id="valD">0</span>
+      </div>
+      <div class="score-card" id="scoreO">
+        <span class="score-val" id="valO">0</span>
+        <span class="score-label" id="labelO">Player O</span>
+        <span class="score-mark o-mark">○</span>
+      </div>
+    </section>
+
+    <!-- Status banner -->
+    <div class="status-banner" id="statusBanner" aria-live="polite">
+      <span id="statusText">Player X's turn</span>
+    </div>
+
+    <!-- Game board -->
+    <div class="board-wrap">
+      <div class="board" id="board" role="grid" aria-label="Tic-Tac-Toe board">
+        <!-- 9 cells injected by JS -->
+      </div>
+      <!-- Win overlay -->
+      <div class="win-overlay" id="winOverlay" aria-hidden="true">
+        <p class="win-msg" id="winMsg"></p>
+        <button class="btn-restart" id="btnOverlayRestart">Play Again</button>
+      </div>
+    </div>
+
+    <!-- Bottom actions -->
+    <div class="bottom-actions">
+      <button class="btn-ghost" id="btnRestart">↺ New Game</button>
+      <button class="btn-ghost" id="btnReset">✕ Reset Scores</button>
+      <button class="btn-ghost" id="btnMute" aria-label="Mute sounds">🔊</button>
+    </div>
+
+    <!-- Stats panel -->
+    <details class="stats-panel">
+      <summary>📊 Session Stats</summary>
+      <div class="stats-grid">
+        <div class="stat"><span id="statGames">0</span><label>Games Played</label></div>
+        <div class="stat"><span id="statXRate">—</span><label>X Win Rate</label></div>
+        <div class="stat"><span id="statORate">—</span><label>O Win Rate</label></div>
+        <div class="stat"><span id="statDRate">—</span><label>Draw Rate</label></div>
+      </div>
+    </details>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
